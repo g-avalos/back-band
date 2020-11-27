@@ -1,9 +1,9 @@
 const {v4: uuid} = require('uuid');
 
 class Band {
-    constructor(nombre = 'sin nombre') {
+    constructor(name = 'sin nombre') {
         this.id = uuid();
-        this.nombre = nombre;
+        this.name = name;
         this.votes = 0;
     }
 }
