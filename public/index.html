@@ -19,18 +19,20 @@
             console.log('Se perdio la conexion con el server');
         });
 
-        client.emit('msg', { nombre: 'Gon' });
-
-        client.on('msg', (payload) => { 
-            console.log(payload);
-        });
-        client.on('nuevo-mensaje', (payload) => { 
-            console.log(payload);
-        });
         client.on('active-bands', (bands) => { 
             console.clear();
             console.table(bands);
         });
+
+        // client.emit('msg', { nombre: 'Gon' });
+
+        // client.on('msg', (payload) => { 
+        //     console.log(payload);
+        // });
+        // client.on('nuevo-mensaje', (payload) => { 
+        //     console.log(payload);
+        // });
+
     </script>
 </body>
 </html>

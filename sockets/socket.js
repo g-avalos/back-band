@@ -18,15 +18,30 @@ io.on('connection', client => {
     client.on('event', data => { /* … */ });
     client.on('disconnect', () => { console.log('Cliente desconectado') });
 
-    client.on('msg', (payload) => { 
-        console.log(payload);
-        io.emit('msg', { admin: 'nuevo mensaje' })
-    });
-
-    client.on('emitir-msg', (payload) => { 
-        console.log(payload);
-        client.broadcaste.emit('nuevo-mensaje', payload)
-    });
-
     client.emit('active-bands', bands.get());
+
+    client.on('vote-band', (band) => {
+        bands.vote(band.id);
+        io.emit('active-bands', bands.get());
+    });
+
+    client.on('add-band', (band) => {
+        bands.add(new Band(band.name));
+        io.emit('active-bands', bands.get());
+    });
+
+    client.on('del-band', (band) => {
+        bands.del(band.id);
+        io.emit('active-bands', bands.get());
+    });
+
+    // client.on('msg', (payload) => { 
+    //     console.log(payload);
+    //     io.emit('msg', { admin: 'nuevo mensaje' })
+    // });
+
+    // client.on('emitir-msg', (payload) => { 
+    //     console.log(payload);
+    //     client.broadcaste.emit('nuevo-mensaje', payload)
+    // });
 });

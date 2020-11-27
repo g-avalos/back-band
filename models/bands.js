@@ -13,15 +13,15 @@ class Bands {
         return this.bands;
      }
 
-     del( id = '') {
+     del(id = '') {
          this.bands = this.bands.filter(band => band.id !== id);
          return this.bands;
      }
 
-     vote(band = new Band()) {
+     vote(id) {
         this.bands = this.bands.map(band => {
             if (band.id === id) {
-                band.vote++;
+                band.votes++;
             }
 
             return band;
